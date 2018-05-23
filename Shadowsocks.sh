@@ -28,12 +28,21 @@ setAutoRun() {
   echo >>/etc/rc.local "ssserver -c /etc/shadowsocks.json -d start"
 }
 
+installPip() {
+  wget https://pypi.python.org/packages/source/p/pip/pip-1.3.1.tar.gz --no-check-certificate
+  tar -xzvf pip-1.3.1.tar.gz 
+  cd pip-1.3.1
+  python setup.py install
+}
+
 echo -e "\033[31m > 正在获取IP... \033[0m"
 getCurrentIP
 echo -e "\033[31m > 当前IP为 ${IP} \033[0m"
 writeConfigFile
 echo -e "\033[31m > 写入配置文件...完成 \033[0m"
-`yum -y install python-setuptools && easy_install pip`
+`yum -y install python-setuptools`
+echo -e "\033[31m > 安装setuptools...完成 \033[0m"
+installPip
 echo -e "\033[31m > 安装pip...完成 \033[0m"
 `pip install shadowsocks`
 echo -e "\033[31m > 安装shadowsocks...完成 \033[0m"
