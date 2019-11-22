@@ -6,6 +6,6 @@
 * ./Shadowsocks.sh
 
 ### 特别感谢Index提供的KCP脚本(博客地址 https://blog.kuoruan.com/about-kuoruan)
-* wget --no-check-certificate https://raw.githubusercontent.com/kuoruan/kcptun_installer/master/kcptun.sh
+* wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh
 * chmod +x ./kcptun.sh
 * ./kcptun.sh
