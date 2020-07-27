@@ -25,7 +25,20 @@ EOF
 }
 
 setAutoRun() {
-  echo >>/etc/rc.local "ssserver -c /etc/shadowsocks.json -d start"
+  cat >>/etc/systemd/system/shadowsocks.service<<-EOF
+[Unit]
+Description=Shadowsocks
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl enable shadowsocks
+systemctl start shadowsocks
 }
 
 installPip() {
